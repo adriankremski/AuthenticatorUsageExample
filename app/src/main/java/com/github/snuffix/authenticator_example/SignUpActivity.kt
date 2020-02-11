@@ -48,7 +48,7 @@ class SignUpActivity : AppCompatActivity() {
         val data = Bundle()
 
         try {
-            val authToken = authRepository.userSignUp(name, accountEmail, accountPassword, AccountConstants.AUTHTOKEN_TYPE_FULL_ACCESS)
+            val authToken = authRepository.userSignUp(name, accountEmail, accountPassword, AccountConstants.AUTH_TOKEN_TYPE_FULL_ACCESS)
 
             data.putString(AccountManager.KEY_ACCOUNT_NAME, accountEmail)
             data.putString(AccountManager.KEY_ACCOUNT_TYPE, accountType)

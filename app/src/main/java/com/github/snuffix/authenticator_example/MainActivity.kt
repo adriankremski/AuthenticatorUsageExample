@@ -19,15 +19,15 @@ class MainActivity : Activity() {
 
         setContentView(R.layout.activity_main)
 
-        addAccountButton.setOnClickListener { addNewAccount(AccountConstants.ACCOUNT_TYPE, AccountConstants.AUTHTOKEN_TYPE_FULL_ACCESS) }
+        addAccountButton.setOnClickListener { addNewAccount(AccountConstants.ACCOUNT_TYPE, AccountConstants.AUTH_TOKEN_TYPE_FULL_ACCESS) }
 
-        getAuthTokenButton.setOnClickListener { showAccountPicker(AccountConstants.AUTHTOKEN_TYPE_FULL_ACCESS, false) }
+        getAuthTokenButton.setOnClickListener { showAccountPicker(AccountConstants.AUTH_TOKEN_TYPE_FULL_ACCESS, false) }
 
         getAuthTokenByFeaturesButton.setOnClickListener {
-            getTokenForAccountCreateIfNeeded(AccountConstants.ACCOUNT_TYPE, AccountConstants.AUTHTOKEN_TYPE_FULL_ACCESS)
+            getTokenForAccountCreateIfNeeded(AccountConstants.ACCOUNT_TYPE, AccountConstants.AUTH_TOKEN_TYPE_FULL_ACCESS)
         }
 
-        invalidateAuthTokenButton.setOnClickListener { showAccountPicker(AccountConstants.AUTHTOKEN_TYPE_FULL_ACCESS, true) }
+        invalidateAuthTokenButton.setOnClickListener { showAccountPicker(AccountConstants.AUTH_TOKEN_TYPE_FULL_ACCESS, true) }
 
         mockServerExceptionButton.setOnClickListener {
             Server.throwInvalidUserExceptionManually = true

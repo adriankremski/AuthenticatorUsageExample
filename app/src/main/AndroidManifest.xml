@@ -1,16 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.github.snuffix.myapplication">
 
-    <!-- *** Not really needed here, but convenient for copying to other apps that will use this module *** -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-    <!-- client -->
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-
-
-    <!-- Authenticator -->
 
     <application
         android:allowBackup="true"

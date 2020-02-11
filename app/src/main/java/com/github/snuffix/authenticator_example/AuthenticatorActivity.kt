@@ -22,20 +22,20 @@ import kotlinx.coroutines.*
 class AuthenticatorActivity : AccountAuthenticatorActivity() {
 
     companion object {
-        val ARG_ACCOUNT_TYPE = "ACCOUNT_TYPE"
-        val ARG_AUTH_TYPE = "AUTH_TYPE"
-        val ARG_ACCOUNT_NAME = "ACCOUNT_NAME"
-        val ARG_IS_ADDING_NEW_ACCOUNT = "IS_ADDING_ACCOUNT"
-        val KEY_ERROR_MESSAGE = "ERR_MSG"
-        val ARG_USER_PASSWORD = "USER_PASS"
-        val REQUEST_SIGNUP_CODE = 1
+        const val ARG_ACCOUNT_TYPE = "ACCOUNT_TYPE"
+        const val ARG_AUTH_TYPE = "AUTH_TYPE"
+        const val ARG_ACCOUNT_NAME = "ACCOUNT_NAME"
+        const val ARG_IS_ADDING_NEW_ACCOUNT = "IS_ADDING_ACCOUNT"
+        const val KEY_ERROR_MESSAGE = "ERR_MSG"
+        const val ARG_USER_PASSWORD = "USER_PASS"
+        const val REQUEST_SIGN_UP_CODE = 1
     }
 
     private val accountManager: AccountManager by lazy { AccountManager.get(this) }
     private val authRepository = AuthRepositoryImpl()
 
     private val accountName: String by lazy { intent.getStringExtra(ARG_ACCOUNT_NAME) }
-    private val authorizationTokenType: String by lazy { intent.getStringExtra(ARG_AUTH_TYPE) ?: AccountConstants.AUTHTOKEN_TYPE_FULL_ACCESS }
+    private val authorizationTokenType: String by lazy { intent.getStringExtra(ARG_AUTH_TYPE) ?: AccountConstants.AUTH_TOKEN_TYPE_FULL_ACCESS }
 
     private var loginJob: Job? = null
 
@@ -56,7 +56,7 @@ class AuthenticatorActivity : AccountAuthenticatorActivity() {
             // and return them in setAccountAuthenticatorResult(). See finishLogin().
             val signupIntent = Intent(baseContext, SignUpActivity::class.java)
             signupIntent.putExtras(intent.extras!!)
-            startActivityForResult(signupIntent, REQUEST_SIGNUP_CODE)
+            startActivityForResult(signupIntent, REQUEST_SIGN_UP_CODE)
         }
     }
 
@@ -114,7 +114,7 @@ class AuthenticatorActivity : AccountAuthenticatorActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         // The sign up activity returned that the user has successfully created an account
-        if (requestCode == REQUEST_SIGNUP_CODE && resultCode == Activity.RESULT_OK) {
+        if (requestCode == REQUEST_SIGN_UP_CODE && resultCode == Activity.RESULT_OK) {
             data?.let {
                 finishLogin(it)
             }
